@@ -5,8 +5,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 mongoose.connect(
   // "mongodb+srv://mongo:Aa55892004@cluster0.bdwd9ao.mongodb.net/?retryWrites=true&w=majority"
-  process.env.DATABASE_URL ||
-    "mongodb+srv://mongo:Aa55892004@cluster0.bdwd9ao.mongodb.net/?retryWrites=true&w=majority"
+  process.env.DATABASE_URL
 );
 
 const user = new mongoose.Schema({
