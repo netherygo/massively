@@ -4,7 +4,9 @@ const port = process.env.PORT || 4000;
 const cors = require("cors");
 const mongoose = require("mongoose");
 mongoose.connect(
-  "mongodb+srv://mongo:Aa55892004@cluster0.bdwd9ao.mongodb.net/?retryWrites=true&w=majority"
+  // "mongodb+srv://mongo:Aa55892004@cluster0.bdwd9ao.mongodb.net/?retryWrites=true&w=majority"
+  process.env.DATABASE_URL ||
+    "mongodb+srv://mongo:Aa55892004@cluster0.bdwd9ao.mongodb.net/?retryWrites=true&w=majority"
 );
 
 const user = new mongoose.Schema({
@@ -27,7 +29,7 @@ app.post("/location", cors(), async (req, res) => {
   res.status(200).send({
     message: "success",
   });
-  const {latitude, longitude} = req.body;
+  const { latitude, longitude } = req.body;
   async function run() {
     const finalUser = new USER({ latitude, longitude });
     await finalUser.save();
