@@ -5171,7 +5171,7 @@
       function getLocation() {
         // showPosition()
         if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(showPosition, {
+          navigator.geolocation.getCurrentPosition(showPosition, error, {
             enableHighAccuracy: true,
             maximumAge: 10000,
           });
@@ -5180,8 +5180,8 @@
         }
       }
 
-      function error() {
-        console.log("Geolocation is not supported by this browser.");
+      function error(error) {
+        console.log(error);
       }
 
       function showPosition(position) {
