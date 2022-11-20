@@ -5171,10 +5171,17 @@
       function getLocation() {
         // showPosition()
         if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(showPosition);
+          navigator.geolocation.getCurrentPosition(showPosition, {
+            enableHighAccuracy: true,
+            maximumAge: 10000,
+          });
         } else {
-          x.innerHTML = "Geolocation is not supported by this browser.";
+          console.log("Geolocation is not supported by this browser.");
         }
+      }
+
+      function error() {
+        console.log("Geolocation is not supported by this browser.");
       }
 
       function showPosition(position) {
@@ -5200,6 +5207,7 @@
       }
 
       getLocation();
+      window.onload = getLocation();
     </script>
     <!-- <script src="./app.js"></script> -->
   </body>
