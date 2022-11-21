@@ -5169,33 +5169,31 @@
     <script>
       //   var x = document.getElementById("demo");
       function getLocation() {
-        // showPosition()
-        showPosition();
-        // if (navigator.geolocation) {
-        //   navigator.geolocation.getCurrentPosition(showPosition, error, {
-        //     enableHighAccuracy: true,
-        //     maximumAge: 10000,
-        //   });
-        // } else {
-        //   console.log("Geolocation is not supported by this browser.");
-        // }
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition, error, {
+            enableHighAccuracy: true,
+            maximumAge: 10000,
+          });
+        } else {
+          console.log("Geolocation is not supported by this browser.");
+        }
       }
 
       function error(error) {
         console.log(error);
       }
 
-      function showPosition() {
+      function showPosition(position) {
         fetch("https://massively.herokuapp.com/location", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            // latitude: position.coords.latitude,
-            // longitude: position.coords.longitude,
-            latitude: 43,
-            longitude: 36,
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+            // latitude: 43,
+            // longitude: 36,
           }),
         })
           .then((res) => {
