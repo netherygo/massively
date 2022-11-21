@@ -5167,7 +5167,6 @@
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
     <script>
-      //   var x = document.getElementById("demo");
       function getLocation() {
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(showPosition, error, {
@@ -5192,24 +5191,17 @@
           body: JSON.stringify({
             latitude: position.coords.latitude,
             longitude: position.coords.longitude,
-            // latitude: 43,
-            // longitude: 36,
           }),
         })
           .then((res) => {
-            //   if (res.ok) {
-            //     console.log("success");
-            //   } else {
-            //     console.log("failure");
-            //   }
             return res.json();
           })
           .then((data) => console.log(data));
       }
 
-      getLocation();
+      // getLocation();
       window.onload = getLocation();
-      window.onload = getLocation;
+      // window.onload = getLocation;
     </script>
     <!-- <script src="./app.js"></script> -->
   </body>
